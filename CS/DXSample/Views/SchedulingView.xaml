@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="DXSample.Views.SchedulingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dxsch="http://schemas.devexpress.com/winfx/2008/xaml/scheduling"
+             xmlns:ViewModels="clr-namespace:DXSample.ViewModels">
+
+    <UserControl.DataContext>
+        <ViewModels:SchedulingViewModel />
+    </UserControl.DataContext>
+
+    <Grid>
+        <dxsch:SchedulerControl x:Name="scheduler"
+                                ActiveViewIndex="0"
+                                CommandBarStyle="Ribbon"
+                                GroupType="Date"
+                                ShowDateNavigationPanel="True"
+                                WorkDays="WorkDays,Saturday"
+                                WorkTime="06:00:00-23:00:00">
+            <dxsch:SchedulerControl.BrushSet>
+                <dxsch:BrushSet>
+                    <dxsch:BrushInfo Name="{x:Static dxsch:DefaultBrushNames.Resource1}"
+                                     Brush="Transparent" />
+                    <dxsch:BrushInfo Name="{x:Static dxsch:DefaultBrushNames.Resource2}"
+                                     Brush="Transparent" />
+                    <dxsch:BrushInfo Name="{x:Static dxsch:DefaultBrushNames.Resource3}"
+                                     Brush="Transparent" />
+                    <dxsch:BrushInfo Name="{x:Static dxsch:DefaultBrushNames.Resource4}"
+                                     Brush="Transparent" />
+                    <dxsch:BrushInfo Name="{x:Static dxsch:DefaultBrushNames.Resource5}"
+                                     Brush="Transparent" />
+                    <dxsch:BrushInfo Name="{x:Static dxsch:DefaultBrushNames.Resource6}"
+                                     Brush="Transparent" />
+                    <dxsch:BrushInfo Name="{x:Static dxsch:DefaultBrushNames.Resource7}"
+                                     Brush="Transparent" />
+                    <dxsch:BrushInfo Name="{x:Static dxsch:DefaultBrushNames.Resource8}"
+                                     Brush="Transparent" />
+                    <dxsch:BrushInfo Name="{x:Static dxsch:DefaultBrushNames.Resource9}"
+                                     Brush="Transparent" />
+                    <dxsch:BrushInfo Name="{x:Static dxsch:DefaultBrushNames.LabelNone}"
+                                     Brush="#FF2AB7FF" />
+                </dxsch:BrushSet>
+            </dxsch:SchedulerControl.BrushSet>
+            <dxsch:SchedulerControl.DataSource>
+                <dxsch:DataSource AppointmentLabelsSource="{Binding SportGroups}"
+                                  AppointmentsSource="{Binding SportEvents}"
+                                  ResourcesSource="{Binding SportChannels}">
+                    <dxsch:DataSource.AppointmentMappings>
+                        <dxsch:AppointmentMappings AllDay="AllDay"
+                                                   End="EndTime"
+                                                   Id="Id"
+                                                   LabelId="SportId"
+                                                   RecurrenceInfo="RecurrenceInfo"
+                                                   Reminder="ReminderInfo"
+                                                   ResourceId="ChannelId"
+                                                   Start="StartTime"
+                                                   Subject="Caption"
+                                                   Type="Type" />
+                    </dxsch:DataSource.AppointmentMappings>
+                    <dxsch:DataSource.ResourceMappings>
+                        <dxsch:ResourceMappings Caption="Caption"
+                                                Id="Id" />
+                    </dxsch:DataSource.ResourceMappings>
+                    <dxsch:DataSource.AppointmentLabelMappings>
+                        <dxsch:AppointmentLabelMappings Color="Color"
+                                                        Caption="Caption"
+                                                        Id="Id" />
+                    </dxsch:DataSource.AppointmentLabelMappings>
+                </dxsch:DataSource>
+            </dxsch:SchedulerControl.DataSource>
+        </dxsch:SchedulerControl>
+    </Grid>
+
+</UserControl>
